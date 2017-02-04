@@ -16,7 +16,7 @@ namespace com.iqmeta.tplink_smartplug
             {
                 var tpEndPoint = new IPEndPoint(IPAddress.Parse(ip), port);
                 sender.Connect(tpEndPoint);
-                sender.Send(Utils.Encrypt(jsonPayload, protocolType == ProtocolType.Tcp));
+                sender.Send(Encrypt(jsonPayload, protocolType == ProtocolType.Tcp));
                 byte[] buffer = new byte[2048];
                 sender.ReceiveTimeout = 5000;
                 EndPoint recEndPoint = tpEndPoint;
@@ -24,7 +24,7 @@ namespace com.iqmeta.tplink_smartplug
                 int bytesLen = sender.Receive(buffer);
                 if (bytesLen > 0)
                 {
-                    return JsonConvert.DeserializeObject<dynamic>(Utils.Decrypt(buffer.Take(bytesLen).ToArray(), protocolType == ProtocolType.Tcp));
+                    return JsonConvert.DeserializeObject<dynamic>(Decrypt(buffer.Take(bytesLen).ToArray(), protocolType == ProtocolType.Tcp));
                 }
                 else
                 {
@@ -56,7 +56,7 @@ namespace com.iqmeta.tplink_smartplug
             return (value & 0x000000FFU) << 24 | (value & 0x0000FF00U) << 8 |
                    (value & 0x00FF0000U) >> 8 | (value & 0xFF000000U) >> 24;
         }
-        public static byte[] Encrypt(string payload, bool hasHeader = true)
+        private static byte[] Encrypt(string payload, bool hasHeader = true)
         {
             byte key = 0xAB;
             byte[] cipherBytes = new byte[payload.Length];
@@ -68,7 +68,7 @@ namespace com.iqmeta.tplink_smartplug
             }
             return header.Concat(cipherBytes).ToArray();
         }
-        public static string Decrypt(byte[] cipher, bool hasHeader = true)
+        private static string Decrypt(byte[] cipher, bool hasHeader = true)
         {
             byte key = 0xAB;
             byte nextKey;
