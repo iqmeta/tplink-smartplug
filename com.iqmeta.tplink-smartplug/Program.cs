@@ -9,9 +9,15 @@ namespace com.iqmeta.tplink_smartplug
         {
             try
             {
-                dynamic plugResponse = Utils.SendToSmartPlug("192.168.178.159", Commands.SysInfoAndEmeter());
+                var state = new BulbState();
+                state.transition_light_state.on_off = 0;
+                dynamic bulbResponse = Utils.SendToSmartBulb("192.168.2.8", state);
+                
+                Console.Write(JsonConvert.SerializeObject(bulbResponse, Formatting.Indented));
+                Console.ReadKey();
 
-                Console.Write(JsonConvert.SerializeObject(plugResponse, Formatting.Indented));
+                dynamic plugResponse = Utils.SendToSmartPlugOrSwitch("192.168.2.2", Commands.SysInfoAndEmeter());
+                Console.WriteLine(JsonConvert.SerializeObject(plugResponse, Formatting.Indented));
                 Console.ReadKey();
 
                 Utils.SendToSmartPlug("192.168.178.159", Commands.TurnOn());
@@ -26,7 +32,7 @@ namespace com.iqmeta.tplink_smartplug
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Houston, we have a " + ex.Message);
+                Console.WriteLine(ex.ToString());
             }
             Console.ReadKey();
         }
