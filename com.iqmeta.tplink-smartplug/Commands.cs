@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 
 namespace com.iqmeta.tplink_smartplug
-{
+{   
     public static class Commands
     {
         public static string TurnOff()
