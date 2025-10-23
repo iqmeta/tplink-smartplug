@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio Version 17
+VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "com.iqmeta.tplink-smartplug", "com.iqmeta.tplink-smartplug.csproj", "{27A21F23-3927-4E0B-AF11-2B446A2CFD04}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GUI-tpLink-smartplug", "..\GUI-tpLink-smartplug\GUI-tpLink-smartplug.csproj", "{0BBDA8B3-D0F2-4165-A454-9834A7CE33D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,8 +17,15 @@ Global
 		{27A21F23-3927-4E0B-AF11-2B446A2CFD04}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27A21F23-3927-4E0B-AF11-2B446A2CFD04}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27A21F23-3927-4E0B-AF11-2B446A2CFD04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BBDA8B3-D0F2-4165-A454-9834A7CE33D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BBDA8B3-D0F2-4165-A454-9834A7CE33D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BBDA8B3-D0F2-4165-A454-9834A7CE33D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BBDA8B3-D0F2-4165-A454-9834A7CE33D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {34F57017-596F-41A6-BF78-586B9F99900D}
 	EndGlobalSection
 EndGlobal
